@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.temptation.dao.LoginUserMapper">
+    <insert id="save" parameterType="LoginUser">  
+        insert into user(username,password) values(#{userName},#{password})  
+    </insert>  
+      
+   <!--   <update id="update" parameterType="User">    
+        update t_user set user_name=#{userName},user_age=#{age} where user_id=#{id}    
+    </update>  
+    --> 
+      
+    <delete id="delete" parameterType="int">    
+        delete from t_user where userid=#{userId}    
+    </delete>    
+        
+     <!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路径 -->      
+    <select id="findByUserName" parameterType="String" resultType="LoginUser">    
+        select userid userId,username userName,password password from user where username=#{userName}   
+    </select>    
+        
+   <!--   <select id="findAll" resultType="User">    
+        select user_id id,user_name userName,user_age age from t_user    
+    </select>   
+    -->
+</mapper>
